@@ -3,6 +3,7 @@ import NoteList from './components/NoteList/NoteList';
 import "./App.css";
 import { useState } from 'react';
 import { nanoid } from "nanoid";
+import Header from "./components/Header"
 
 const App = () => {
   const [notes, setNotes] = useState([
@@ -30,6 +31,7 @@ const App = () => {
 
   return (
     <div className='container'>
+      <Header/>
       <NoteList notes = {notes}/>
     </div>
   );
