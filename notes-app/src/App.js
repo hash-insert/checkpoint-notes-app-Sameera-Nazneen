@@ -4,7 +4,7 @@ import "./App.css";
 import { useState } from 'react';
 import { nanoid } from "nanoid";
 import Header from "./components/Header"
-
+import AddNote from "./components/AddNode/AddNote"
 const App = () => {
   const [notes, setNotes] = useState([
     {
@@ -32,6 +32,7 @@ const App = () => {
   return (
     <div className='container'>
       <Header/>
+      <AddNote/>
       <NoteList notes = {notes}/>
     </div>
   );
