@@ -4,9 +4,12 @@ import "./App.css";
 import { useState } from 'react';
 import { nanoid } from "nanoid";
 import Header from "./components/Header"
-import AddNote from "./components/AddNode/AddNote"
+import AddNote from "./components/AddNode/AddNote";
+import Search from './components/Search/Search';
+
 const App = () => {
   const [notes, setNotes] = useState([]);
+  const [searchText, setSearchText] = useState(''); 
  
   const addNote = ( text ) => {
     console.log(text);
@@ -19,12 +22,18 @@ const App = () => {
     const newNotes = [...notes, newNote];
     setNotes(newNotes);
   }
+
+  const deleteNote = (id) => {
+    const newNotes = notes.filter((note) => note.id !== id );
+    setNotes(newNotes);
+  }
   return (
     <div className='container'>
       <Header/>
-      <AddNote handleAddNote={addNote
-      }/>
-      <NoteList notes = {notes} handleAddNote = {addNote}/>
+      <Search handleSearchNote = {setSearchText}/>
+      <AddNote handleAddNote={addNote}/>
+      
+      <NoteList notes = {notes.filter((note) => note.text.toLowerCase().includes(searchText))} handleAddNote = {addNote} handleDeleteNote = {deleteNote}/>
     </div>
   );
 };
