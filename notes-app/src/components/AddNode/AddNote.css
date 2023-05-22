@@ -1,4 +1,4 @@
-.add-note{
+.note.new{
     background-color: aquamarine;
     border-radius: 10px;
     display: flex;
@@ -19,8 +19,17 @@ textarea{
     border-radius: 10px;
 }
 
+textarea:focus {
+    outline: none;
+}
+
 .save{
     border-radius: 10px;
-    padding: 5px;
+    padding: 5px 10px 5px 10px;
     border-color: darkgrey;
+}
+
+.save:hover{
+    background-color: grey;
+    cursor: pointer;
 }

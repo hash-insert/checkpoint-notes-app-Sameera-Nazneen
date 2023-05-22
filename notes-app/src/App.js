@@ -6,34 +6,25 @@ import { nanoid } from "nanoid";
 import Header from "./components/Header"
 import AddNote from "./components/AddNode/AddNote"
 const App = () => {
-  const [notes, setNotes] = useState([
-    {
+  const [notes, setNotes] = useState([]);
+ 
+  const addNote = ( text ) => {
+    console.log(text);
+    const date = new Date();
+    const newNote = {
       id : nanoid(),
-      text : "Hello! This is my first note",
-      date : "13/09/23"
-    },
-    {
-      id : nanoid(),
-      text : "Hello! This is my secomd note",
-      date : "13/09/23"
-    },
-    {
-      id : nanoid(),
-      text : "Hello! This is my third note",
-      date : "13/09/23"
-    },
-    {
-      id : nanoid(),
-      text : "Hello! This is my last note",
-      date : "13/09/23"
+      text : text,
+      date : date.toLocaleDateString()
     }
-  ]);
-
+    const newNotes = [...notes, newNote];
+    setNotes(newNotes);
+  }
   return (
     <div className='container'>
       <Header/>
-      <AddNote/>
-      <NoteList notes = {notes}/>
+      <AddNote handleAddNote={addNote
+      }/>
+      <NoteList notes = {notes} handleAddNote = {addNote}/>
     </div>
   );
 };
